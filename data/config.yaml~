@@ -1,0 +1,5 @@
+#chrome/firefox/edge
+browser: edge 
+
+#True/False
+headless: False

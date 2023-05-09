@@ -1,0 +1,40 @@
+# coding=utf-8
+import time
+import pytest
+from pages.search_page import SearchPage
+from tests.base_test import BaseTest
+
+
+class TestSearch(BaseTest):
+
+    @pytest.fixture
+    #def load_pages(self):
+    #    self.page = SearchPage(self.driver, self.wait)
+    #    #time.sleep(2)
+    #    self.page.go_to_search_page()
+    #    #time.sleep(2)
+
+    #def test_title(self, load_pages):
+    #    time.sleep(2)
+    #    self.page.check_title("DuckDuckGo — Privacidade simplificada.")
+    #    time.sleep(2)
+
+    #def test_search(self, load_pages):
+    #    time.sleep(2)
+    #    self.page.make_a_search("Selenium")
+    #    time.sleep(2)
+
+    def test_login(self, load_pages):
+        self.page.url = "https://lichess.org/login"
+        login = "adesk5"
+        password = "dranzer2"
+
+        self.driver.find_element(*self.driver.locator.LOGIN_INPUT).send_keys(login)
+        self.driver.find_element(*self.driver.locator.PASSWORD_INPUT).send_keys(password)
+        self.driver.find_element(*self.driver.locator.ENTER_BUTTON).click()
+        self.wait.until(EC.presence_of_element_located(self.driver.locator.USER_TAG))
+
+
+
+
+        
