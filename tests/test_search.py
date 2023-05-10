@@ -4,6 +4,7 @@ import pytest
 from pages.search_page import SearchPage
 from tests.base_test import BaseTest
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By 
 
 
 class TestSearch(BaseTest):
@@ -24,6 +25,23 @@ class TestSearch(BaseTest):
         time.sleep(2)
         self.page.make_a_search("Selenium")
         time.sleep(2)
+    
+    def test_url(self, load_pages):
+        time.sleep(2)
+        self.page = SearchPage(self.driver, self.wait, "https://chess.com")
+        time.sleep(1)
+        self.page.go_to_search_page()
+        time.sleep(2)
+        assert "https://www.chess.com/" == self.driver.current_url
+        time.sleep(2)
+
+    def test_content_in_page(self, load_pages):
+        self.page.make_a_search("scotch game")
+        time.sleep(2)
+
+        assert "Scotch Game - Chess Openings - Chess.com" == self.driver.find_element(By.CLASS_NAME, "EKtkFWMYpwzMKOYr0GYm").get_attribute("innerText")
+        time.sleep(2)
+
 
     def test_login(self, load_pages):
 
