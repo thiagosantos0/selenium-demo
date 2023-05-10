@@ -4,6 +4,7 @@
 - python3 -m env_name
 - source env-test/bin activate
 - pip install -r requirements.txt
+- pytest -v --html=results/report.html (na raiz do projeto)
 
 Como não temos um sistema propriamente dito, utilizei de sistemas existentes (duckduckgo e o lichess) para ilustrar as funcionalidades do selenium.
 
